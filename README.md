@@ -28,7 +28,7 @@ docker stack deploy -c docker-compose.yml mxs
 
 ```
 docker exec -it (maxscale_contair_id) bash
-maxcgrl list servers
+maxctrl list servers
 ```
 
 MaxScale read/write split accepts client access at port 3306.
