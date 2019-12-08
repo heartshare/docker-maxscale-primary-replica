@@ -10,8 +10,11 @@ jobs:
       run: |
         docker swarm init
         docker stack deploy -c docker-compose.yml mxs
+    - name: Check running containers
+      run: docker ps
     - name: maxctrl list servers
       run: |
-        sleep 20
+        sleep 30
+        docker ps
         container_id=`docker ps | grep _maxscale | cut -f 1 -d ' ' `
         docker exec -it $container_id maxctrl list servers
