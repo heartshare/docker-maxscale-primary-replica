@@ -1,48 +1,47 @@
 version: '3.1'
 services:
-    primary:
-        image: mariadb/server:latest
-        environment:
-            MYSQL_ALLOW_EMPTY_PASSWORD: 'Y'
-        volumes:
-            - ./sql/primary:/docker-entrypoint-initdb.d
-        command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=3000 --character-set-server=utf8mb4
-        ports:
-            - "4001:3306"
+  primary:
+    image: mariadb/server:latest
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'Y'
+    volumes:
+      - ./sql/primary:/docker-entrypoint-initdb.d
+    command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=3000 --character-set-server=utf8mb4
+    ports:
+      - "4001:3306"
 
-    replica1:
-        image: mariadb/server:latest
-        depends_on:
-            - primary
-        environment:
-            MYSQL_ALLOW_EMPTY_PASSWORD: 'Y'
-        volumes:
-            - ./sql/replica:/docker-entrypoint-initdb.d
-        command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=3001 --log-slave-updates --character-set-server=utf8mb4
-        ports:
-            - "4002:3306"
+  replica1:
+    image: mariadb/server:latest
+    depends_on:
+      - primary
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'Y'
+    volumes:
+      - ./sql/replica:/docker-entrypoint-initdb.d
+    command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=3001 --log-slave-updates --character-set-server=utf8mb4
+    ports:
+      - "4002:3306"
 
-    replica2:
-        image: mariadb/server:latest
-        depends_on:
-            - primary
-        environment:
-            MYSQL_ALLOW_EMPTY_PASSWORD: 'Y'
-        volumes:
-            - ./sql/replica:/docker-entrypoint-initdb.d
-        command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=3002 --log-slave-updates --character-set-server=utf8mb4
-        ports:
-            - "4003:3306"
+  replica2:
+    image: mariadb/server:latest
+    depends_on:
+      - primary
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'Y'
+    volumes:
+      - ./sql/replica:/docker-entrypoint-initdb.d
+    command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=3002 --log-slave-updates --character-set-server=utf8mb4
+    ports:
+      - "4003:3306"
 
-    maxscale:
-        image: mariadb/maxscale:latest
-        depends_on:
-            - primary
-            - replica1
-            - replica2
-        volumes:
-            - ./maxscale.cnf.d:/etc/maxscale.cnf.d
-        ports:
-            - "3306:3306"  # readwrite port
-            - "8989:8989"  # REST API port
-
+  maxscale:
+    image: mariadb/maxscale:latest
+    depends_on:
+      - primary
+      - replica1
+      - replica2
+    volumes:
+      - ./maxscale.cnf.d:/etc/maxscale.cnf.d
+    ports:
+      - "3306:3306" # readwrite port
+      - "8989:8989" # REST API port
