@@ -27,7 +27,7 @@ docker stack deploy -c docker-compose.yml mxs
 ## maxctrl list servers
 
 ```
-docker exec -it (maxscale_contair_id) bash
+docker exec (maxscale_contair_id) bash
 maxctrl list servers
 ```
 
