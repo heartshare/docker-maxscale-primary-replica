@@ -12,5 +12,6 @@ jobs:
         docker stack deploy -c docker-compose.yml mxs
     - name: maxctrl list servers
       run: |
+        sleep 20
         container_id=`docker ps | grep _maxscale | cut -f 1 -d ' ' `
         docker exec -it $container_id maxctrl list servers
