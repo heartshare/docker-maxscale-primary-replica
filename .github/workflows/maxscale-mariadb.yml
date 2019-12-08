@@ -10,8 +10,8 @@ jobs:
       run: |
         docker swarm init
         docker stack deploy -c docker-compose.yml mxs
-    - name: wait 30 s to deploy
-      run: sleep 30
+    - name: wait 40 sec to deploy
+      run: sleep 40
     - name: maxctrl list servers
       run: |
         docker ps
