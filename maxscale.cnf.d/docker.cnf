@@ -25,7 +25,7 @@ password=maxpwd
 auto_failover=true
 auto_rejoin=true
 enforce_read_only_slaves=1
-monitor_interval=100
+monitor_interval=200
 
 [Read-Write-Service]
 type=service
@@ -34,6 +34,7 @@ servers=server1,server2,server3
 user=maxuser
 password=maxpwd
 master_failure_mode=fail_on_write
+transaction_replay=true
 
 [Read-Write-Listener]
 type=listener
