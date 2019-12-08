@@ -16,5 +16,6 @@ jobs:
       run: |
         sleep 30
         docker ps
-        container_id=`docker ps | grep _maxscale | cut -f 1 -d ' ' `
+        container_id=`docker ps | grep _maxscale | cut -f1 -d' ' `
+        echo $container_id
         docker exec -it $container_id maxctrl list servers
