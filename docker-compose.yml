@@ -6,7 +6,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'Y'
     volumes:
       - ./sql/primary:/docker-entrypoint-initdb.d
-    command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=3000 --character-set-server=utf8mb4
+    command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=1 --character-set-server=utf8mb4
     ports:
       - "4001:3306"
 
@@ -18,7 +18,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'Y'
     volumes:
       - ./sql/replica:/docker-entrypoint-initdb.d
-    command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=3001 --log-slave-updates --character-set-server=utf8mb4
+    command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=2 --log-slave-updates --character-set-server=utf8mb4
     ports:
       - "4002:3306"
 
@@ -30,7 +30,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'Y'
     volumes:
       - ./sql/replica:/docker-entrypoint-initdb.d
-    command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=3002 --log-slave-updates --character-set-server=utf8mb4
+    command: mysqld --log-bin=mariadb-bin --binlog-format=ROW --server-id=3 --log-slave-updates --character-set-server=utf8mb4
     ports:
       - "4003:3306"
 
