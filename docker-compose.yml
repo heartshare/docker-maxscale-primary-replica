@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   primary:
-    image: mariadb/server:latest
+    image: mariadb/server
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'Y'
     volumes:
@@ -11,7 +11,7 @@ services:
       - "4001:3306"
 
   replica1:
-    image: mariadb/server:latest
+    image: mariadb/server
     depends_on:
       - primary
     environment:
@@ -23,7 +23,7 @@ services:
       - "4002:3306"
 
   replica2:
-    image: mariadb/server:latest
+    image: mariadb/server
     depends_on:
       - primary
     environment:
@@ -35,7 +35,7 @@ services:
       - "4003:3306"
 
   maxscale:
-    image: mariadb/maxscale:latest
+    image: mariadb/maxscale
     depends_on:
       - primary
       - replica1
