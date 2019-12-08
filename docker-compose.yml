@@ -43,5 +43,5 @@ services:
     volumes:
       - ./maxscale.cnf.d:/etc/maxscale.cnf.d
     ports:
-      - "3306:3306" # readwrite port
+      - "3306:3306" # read/write port
       - "8989:8989" # REST API port
