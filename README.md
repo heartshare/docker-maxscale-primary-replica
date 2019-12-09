@@ -1,3 +1,5 @@
+https://github.com/goto-satoru/docker-maxscale-primary-replica/workflows/Stack%20deploy%20test/badge.svg
+
 # MaxScale MariaDB Monitor + MariaDB Server Primary/Replica on Docker
 
 ## Install docker-compose on Linux systems
