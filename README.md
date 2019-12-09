@@ -1,3 +1,5 @@
+![Actions Status](https://github.com/{owner}/{repo}/workflows/{workflow_name}/badge.svg)
+
 # MaxScale MariaDB Monitor + MariaDB Server Primary/Replica on Docker
 
 ## Install docker-compose on Linux systems
