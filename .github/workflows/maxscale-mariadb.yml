@@ -1,4 +1,4 @@
-name: Stack deploy test
+name: stack-deploy-test
 on: [push]
 
 jobs:
