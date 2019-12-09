@@ -1,4 +1,5 @@
-![Actions Status](https://github.com/{owner}/{repo}/workflows/{workflow_name}/badge.svg)
+![Actions Status](https://github.com/goto-satoru/docker-maxscale-primary-replica
+/workflows/stack-deploy-test/badge.svg)
 
 # MaxScale MariaDB Monitor + MariaDB Server Primary/Replica on Docker
 
