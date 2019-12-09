@@ -1,4 +1,4 @@
-name: deploy
+name: Stack deploy test
 on: [push]
 
 jobs:
